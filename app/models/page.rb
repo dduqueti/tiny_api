@@ -4,5 +4,5 @@ class Page < ActiveRecord::Base
 	has_many :page_elements
 
 	# Validations
-	validates :url, presence: true, length: { maximum: 2000 }
+	validates :url, presence: true, length: { maximum: 2000 }, url: true
 end
