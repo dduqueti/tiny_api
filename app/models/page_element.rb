@@ -1,5 +1,3 @@
-require 'test_helper'
-
 class PageElement < ActiveRecord::Base
 
 	ELEMENT_TYPES = %w(h1 h2 h3 a)
