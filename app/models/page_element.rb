@@ -1,8 +1,8 @@
 class PageElement < ActiveRecord::Base
 
-	ELEMENT_TYPES = %w(h1 h2 h3 a)
+  ELEMENT_TYPES = %w(h1 h2 h3 a)
 
-	# Relations
+  # Relations
   belongs_to :page
 
   # Validations

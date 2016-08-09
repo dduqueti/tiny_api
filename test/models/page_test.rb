@@ -2,7 +2,7 @@ require 'test_helper'
 
 class PageTest < ActiveSupport::TestCase
 
-	let(:page) { FactoryGirl.create(:page, url: "http://www.google.com") }
+  let(:page) { FactoryGirl.create(:page, url: "http://www.google.com") }
 
   it 'has a valid factory' do
     page.must_be_instance_of Page

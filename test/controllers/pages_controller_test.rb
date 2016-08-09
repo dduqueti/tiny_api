@@ -1,9 +1,9 @@
 class PagesControllerTest < ActionDispatch::IntegrationTest
 
-	before do
-		@page_one = FactoryGirl.create(:page, :with_page_elements)
-		@page_two = FactoryGirl.create(:page)
-	end
+  before do
+    @page_one = FactoryGirl.create(:page, :with_page_elements)
+    @page_two = FactoryGirl.create(:page)
+  end
 
   it "should return list of pages and page elements on index" do
     get '/api/v1/pages', format: :json
@@ -24,16 +24,16 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
     assert_equal @page_one.url, page[0]['url']
   end
 
-	it "can create a page on create" do
+  it "can create a page on create" do
     assert_difference('Page.count', +1) do
-	   post '/api/v1/pages', { page: { url: "http://www.google.com" } }
+     post '/api/v1/pages', { page: { url: "http://www.google.com" } }
     end
     assert_response :success
     assert_equal 201, status
     assert_equal 3, Page.count
-	end
+  end
 
-	it "should destroy page on destroy" do
+  it "should destroy page on destroy" do
     assert_difference('Page.count', -1) do
       delete api_v1_page_url(@page_one)
     end
