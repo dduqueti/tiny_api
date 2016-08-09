@@ -19,7 +19,8 @@ module Api
       # POST /pages.json
       def create
         page = Page.new(page_params)
-        if page.save
+        page = ParsePageService.new(page).parse
+        if page.errors.blank?
           render json: page, status: 201, location: [:api, :v1, page]
         else
           render json: { errors: page.errors }, status: 422
@@ -38,10 +39,6 @@ module Api
 
         def page_params
           params.require(:page).permit(:url)
-        end
-
-        def parse_with_service(page)
-          ParsePageService.new(page).parse
         end
     end
   end

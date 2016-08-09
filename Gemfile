@@ -38,6 +38,9 @@ gem 'responders', '~> 2.0'
 # URL validator
 gem 'validate_url'
 
+# HTML parser
+gem 'nokogiri'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -60,7 +63,7 @@ group :development do
 end
 
 group :test do
-	# Capybara gems
+  # Capybara gems
   gem 'database_cleaner', '~> 1.3.0'
   gem 'launchy', require: false
   gem 'shoulda-matchers', '~> 3.0'

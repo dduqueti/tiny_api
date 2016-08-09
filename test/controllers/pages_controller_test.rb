@@ -31,6 +31,7 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_equal 201, status
     assert_equal 3, Page.count
+    assert_operator 0, :<, Page.last.page_elements.count
   end
 
   it "should destroy page on destroy" do

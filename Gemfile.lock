@@ -229,6 +229,7 @@ DEPENDENCIES
   jquery-rails
   launchy
   minitest-spec-rails
+  nokogiri
   pg (~> 0.15)
   pry-byebug (~> 3.3.0)
   pry-rails (~> 0.3.4)
