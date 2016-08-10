@@ -1,6 +1,7 @@
 class PageElement < ActiveRecord::Base
 
   ELEMENT_TYPES = { h1: 'text', h2: 'text', h3: 'text', a: 'href'}
+  ELEMENT_ATTRIBUTES = %w(href)
 
   # Relations
   belongs_to :page

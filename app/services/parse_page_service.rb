@@ -11,19 +11,29 @@ class ParsePageService
 
   def parse
     return page unless page.valid?
-    html = open(page.url)
-    doc = Nokogiri::HTML(html)
     PageElement::ELEMENT_TYPES.each do |key, value|
-      doc.css(key.to_s).each do |element|
-        create_element(key.to_s, element.attribute(value))
+      data.css(key.to_s).each do |element|
+        create_element(key.to_s, fetch_content(element, value))
       end
     end
     page.save
     page
   end
 
+  def fetch_content(element, value)
+    if PageElement::ELEMENT_ATTRIBUTES.include? value.to_s
+      element.attribute(value)
+    else
+      element.send(value)
+    end
+  end
+
   def create_element(type, content)
     page.page_elements.build(element_type: type, content: content)
+  end
+
+  def data
+    @data ||= Nokogiri::HTML(open(page.url))
   end
 
 end
