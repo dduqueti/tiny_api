@@ -9,6 +9,17 @@ class ParsePageServiceTest < ActiveSupport::TestCase
 
   it "parses page content from valid url" do
     page = @parse_service.parse
+    assert_equal 0, page.errors.count
+    assert_equal 1, Page.count
+    assert_operator 0, :<, Page.first.page_elements.count
+    assert_equal false, Page.first.page_elements.any? { |e| e.content.nil? }
+  end
+
+  it "parses page content from valid url with https protocol" do
+    @page_one = FactoryGirl.build(:page, url: "https://www.twitter.com")
+    @parse_service = ParsePageService.new(@page_one)
+    page = @parse_service.parse
+    assert_equal 0, page.errors.count
     assert_equal 1, Page.count
     assert_operator 0, :<, Page.first.page_elements.count
     assert_equal false, Page.first.page_elements.any? { |e| e.content.nil? }

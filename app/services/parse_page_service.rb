@@ -1,9 +1,10 @@
 require 'open-uri'
 require 'nokogiri'
+require 'openssl'
 
 class ParsePageService
 
-  attr_reader :page
+  attr_reader :page, :data
 
   def initialize(page)
     @page = page
@@ -11,9 +12,11 @@ class ParsePageService
 
   def parse
     return page unless page.valid?
+    page.page_elements = []
     PageElement::ELEMENT_TYPES.each do |key, value|
       data.css(key.to_s).each do |element|
-        create_element(key.to_s, fetch_content(element, value))
+        content = fetch_content(element, value)
+        create_element(key.to_s, content) if content
       end
     end
     page.save
@@ -33,7 +36,6 @@ class ParsePageService
   end
 
   def data
-    @data ||= Nokogiri::HTML(open(page.url))
+    @data ||= Nokogiri::HTML(open(page.url, :ssl_verify_mode => OpenSSL::SSL::VERIFY_NONE))
   end
-
 end

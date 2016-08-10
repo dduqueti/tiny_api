@@ -34,6 +34,19 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
     assert_operator 0, :<, Page.last.page_elements.count
   end
 
+  it "updates content on create when URL already exist" do
+    assert_difference('Page.count', +1) do
+     post '/api/v1/pages', { page: { url: "http://www.google.com" } }
+    end
+    assert_response :success
+    initial_count = Page.last.page_elements.count
+    assert_equal 3, Page.count
+    post '/api/v1/pages', { page: { url: "http://www.google.com" } }
+    assert_equal 201, status
+    assert_equal 3, Page.count
+    assert_operator initial_count, :==, Page.last.page_elements.count
+  end
+
   it "should destroy page on destroy" do
     assert_difference('Page.count', -1) do
       delete api_v1_page_url(@page_one)
