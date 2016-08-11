@@ -2,4 +2,6 @@
 require File.expand_path('../application', __FILE__)
 
 # Initialize the Rails application.
-Rails.application.initialize!
+Rails.application.initialize! do |config|
+	config.gem 'redis'
+end

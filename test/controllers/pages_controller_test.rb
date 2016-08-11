@@ -33,7 +33,7 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_equal 201, status
     assert_equal 3, Page.count
-    assert_operator 0, :<, Page.last.page_elements.count
+    assert_operator 8, :==, Page.last.page_elements.count
   end
 
   it "updates content on create when URL already exist" do

@@ -1,5 +1,8 @@
+require 'resque/server'
+
 Rails.application.routes.draw do
 
+  mount Resque::Server.new, at: '/resque'
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do

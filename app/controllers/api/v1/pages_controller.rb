@@ -20,8 +20,10 @@ module Api
       def create
         url = params[:url] || params[:page][:url]
         page = Page.find_or_initialize_by(url: url)
-        page = ParsePageService.new(page).parse
-        if page.errors.blank?
+        page.parsing = true
+        page.page_elements = []
+        if page.save
+          Resque.enqueue(PageParserWorker, page.id)
           render json: page, status: 201, location: [:api, :v1, page]
         else
           render json: { errors: page.errors }, status: 422
