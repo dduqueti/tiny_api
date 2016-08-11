@@ -3,6 +3,8 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
   before do
     @page_one = FactoryGirl.create(:page, :with_page_elements)
     @page_two = FactoryGirl.create(:page)
+    raw_response_file = File.new("#{Rails.root}/test/fixtures/all_sample_elements_fixture.txt")
+    stub_request(:get, "http://www.google.com").to_return(raw_response_file)
   end
 
   it "should return list of pages and page elements on index" do

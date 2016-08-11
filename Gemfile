@@ -70,5 +70,6 @@ group :test do
   gem 'faker'
   gem 'minitest-spec-rails'
   gem 'fuubar'
+  gem 'webmock'
 end
 

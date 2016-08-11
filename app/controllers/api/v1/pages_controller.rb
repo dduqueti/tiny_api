@@ -18,7 +18,8 @@ module Api
       # POST /pages
       # POST /pages.json
       def create
-        page = Page.find_or_initialize_by(page_params)
+        url = params[:url] || params[:page][:url]
+        page = Page.find_or_initialize_by(url: url)
         page = ParsePageService.new(page).parse
         if page.errors.blank?
           render json: page, status: 201, location: [:api, :v1, page]

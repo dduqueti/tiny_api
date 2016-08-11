@@ -1,0 +1,69 @@
+HTTP/1.1 200 OK
+Cache-Control: max-age=604800
+Content-Type: text/html
+Date: Thu, 11 Aug 2016 02:33:52 GMT
+Etag: "359670651+gzip+ident"
+Expires: Thu, 18 Aug 2016 02:33:52 GMT
+Last-Modified: Fri, 09 Aug 2013 23:54:35 GMT
+Server: ECS (fll/0761)
+Vary: Accept-Encoding
+X-Cache: HIT
+x-ec-custom-error: 1
+Content-Length: 1270
+
+<!doctype html>
+<html>
+<head>
+    <title>Example Domain</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type="text/css">
+    body {
+        background-color: #f0f0f2;
+        margin: 0;
+        padding: 0;
+        font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+    }
+    div {
+        width: 600px;
+        margin: 5em auto;
+        padding: 50px;
+        background-color: #fff;
+        border-radius: 1em;
+    }
+    a:link, a:visited {
+        color: #38488f;
+        text-decoration: none;
+    }
+    @media (max-width: 700px) {
+        body {
+            background-color: #fff;
+        }
+        div {
+            width: auto;
+            margin: 0 auto;
+            border-radius: 0;
+            padding: 1em;
+        }
+    }
+    </style>
+</head>
+
+<body>
+<div>
+    <h1>Example Domain H1</h1>
+    <h2>Example Domain H2</h2>
+    <h3>Example Domain H3A</h3>
+    <h3>Example Domain H3B</h3>
+    <p>This domain is established to be used for illustrative examples in documents. You may use this
+    domain in examples without prior coordination or asking for permission.</p>
+    <p><a href="http://www.iana.org/domains/example1">More information...</a></p>
+    <p><a href="http://www.iana.org/domains/example2">More information...</a></p>
+    <p><a href="http://www.iana.org/domains/example3">More information...</a></p>
+    <p><a href="/domains/example4">More information...</a></p>
+</div>
+</body>
+</html>
