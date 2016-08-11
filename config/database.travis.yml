@@ -1,0 +1,4 @@
+test:
+  adapter: postgresql
+  database: tiny_api_development
+  username: postgres
