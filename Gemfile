@@ -56,6 +56,7 @@ group :development, :test do
   gem 'factory_girl_rails', '~> 4.0'
   gem 'pry-rails', '~> 0.3.4'
   gem 'pry-byebug', '~> 3.3.0'
+  gem 'minitest-spec-rails'
 end
 
 group :development do
@@ -77,7 +78,6 @@ group :test do
   gem 'launchy', require: false
   gem 'shoulda-matchers', '~> 3.0'
   gem 'faker'
-  gem 'minitest-spec-rails'
   gem 'fuubar'
   gem 'webmock'
 end
